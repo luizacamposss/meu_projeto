@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Uma Carta</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a class="active" href="#nos">Nós</a></li>
+                <li><a href="#carta">Carta</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#linhadotempo">Linha do Tempo</a></li>
+            </ul>
+        </nav>
+        <div class="coracoes"></div>
+            <video autoplay muted loop id="video-background">
+                <source src="videos/video 2.mp4" type="video/mp4">
+            </video>
+        <div style="padding:20px;margin-top:30px;">
+           <div class="mensagem-especial">
+            <p id="mensagem">Obrigada por tudo, meu amor 💖</p>
+            <p id="mensagem2"> Isso é só um projeto, espero que vc goste.
+</div>
+        </div>
+
+    <div class="carrossel">
+        <div class="slides">
+            <div class="slide">
+                <img src="images/img 1.jpg" alt="Imagem 1">
+            </div>
+            <div class="slide">
+                <img src="images/img 2.jpg" alt="Imagem 2">
+            </div>
+            <div class="slide">
+                <img src="images/img 3.jpg" alt="Imagem 3">
+            </div>
+            <div class="slide">
+                <img src="images/img 4.jpg" alt="Imagem 4">
+            </div>
+            <div class="slide">
+                <img src="images/img 5.jpg" alt="Imagem 5">
+            </div>
+        </div>
+        
+        <div class="indicadores">
+            <span class="indicador" onclick="mostrarSlide(0)"></span>
+            <span class="indicador" onclick="mostrarSlide(1)"></span>
+            <span class="indicador" onclick="mostrarSlide(2)"></span>
+            <span class="indicador" onclick="mostrarSlide(3)"></span>
+            <span class="indicador" onclick="mostrarSlide(4)"></span>
+
+            
+        </div>
+    </div>
+    
+</body>
+</html>
