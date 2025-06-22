@@ -364,9 +364,10 @@ nav li a:hover, nav li a.active {
     border-radius: 8px;
     border: 2px solid var(--rosa-neon); /* Borda sutil para dar acabamento */
     font-family: "Indie Flower", cursive;   /* Mantenha ou troque pela fonte que preferir */
-    line-height: 1.8;
+    line-height: 1.4;
     font-size: 1.5em;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Uma sombra para dar profundidade */
+    color: var(--preto-sujo); /* <--- COR DO TEXTO ALTERADA */
 
 }
 
