@@ -150,13 +150,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const galeriaGrid = document.getElementById('galeria-grid');
-    for (let i = 1; i <= 145; i++) {
-        const div = document.createElement('div');
-        div.className = 'galeria-item';
-        const img = document.createElement('img');
-        img.src = `images/galeria${i}.jpg`;
-        img.alt = `Momento ${i}`;
-        div.appendChild(img);
-        galeriaGrid.appendChild(div);
+document.addEventListener('DOMContentLoaded', function() {
+    // Tenta encontrar o container da galeria na página
+    const galeriaGrid = document.getElementById('galeria-grid');
+
+    // Se o container da galeria existir...
+    if (galeriaGrid) {
+        // --- CÓDIGO PARA GERAR A GALERIA ---
+        const totalImagens = 140; // Total de fotos que você tem
+        const caminhoBase = 'Para Mi Catita/images/galeria'; // Caminho base das imagens
+
+        for (let i = 1; i <= totalImagens; i++) {
+            const divItem = document.createElement('div');
+            divItem.classList.add('galeria-item');
+
+            const img = document.createElement('img');
+            img.src = `${caminhoBase}${i}.jpg`;
+            img.alt = `Momento ${i}`;
+
+            divItem.appendChild(img);
+            galeriaGrid.appendChild(divItem);
+        }
+
+        // --- CÓDIGO DA LIGHTBOX (COM CORREÇÃO) ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-imagem');
+        const closeLightbox = document.querySelector('.fechar-lightbox');
+        const galleryImages = document.querySelectorAll('.galeria-grid img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                if (lightbox) {
+                    lightbox.classList.add('ativo');
+                    lightboxImage.src = this.src;
+                    lightboxImage.alt = this.alt;
+                }
+            });
+        });
+
+        // VERIFICA SE O BOTÃO DE FECHAR EXISTE ANTES DE USÁ-LO
+        if (closeLightbox) {
+            closeLightbox.addEventListener('click', function() {
+                if (lightbox) {
+                    lightbox.classList.remove('ativo');
+                }
+            });
+        }
+
+        // VERIFICA SE A LIGHTBOX EXISTE ANTES DE USÁ-LA
+        if (lightbox) {
+            lightbox.addEventListener('click', function(event) {
+                if (event.target === lightbox) {
+                    lightbox.classList.remove('ativo');
+                }
+            });
+        }
     }
+});
