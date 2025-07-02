@@ -124,3 +124,39 @@ if (playBtn && audio) {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryImages = document.querySelectorAll('.galeria-grid img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-imagem');
+    const closeLightbox = document.querySelector('.fechar-lightbox');
+
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            lightbox.classList.add('ativo');
+            lightboxImage.src = this.src;
+            lightboxImage.alt = this.alt;
+        });
+    });
+
+    closeLightbox.addEventListener('click', function() {
+        lightbox.classList.remove('ativo');
+    });
+
+    lightbox.addEventListener('click', function(event) {
+        if (event.target === lightbox) {
+            lightbox.classList.remove('ativo');
+        }
+    });
+});
+
+const galeriaGrid = document.getElementById('galeria-grid');
+    for (let i = 1; i <= 145; i++) {
+        const div = document.createElement('div');
+        div.className = 'galeria-item';
+        const img = document.createElement('img');
+        img.src = `images/galeria${i}.jpg`;
+        img.alt = `Momento ${i}`;
+        div.appendChild(img);
+        galeriaGrid.appendChild(div);
+    }
