@@ -14,6 +14,65 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh; /* Ocupa a tela inteira */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Esconde barras de rolagem */
+    transition: opacity 0.5s ease-out; /* Transição para o fade-out */
+}
+
+/* Classe para o efeito de fade-out */
+body.fading-out {
+    opacity: 0;
+}
+
+.splash-container {
+    text-align: center;
+}
+
+#enter-btn {
+    background-color: transparent;
+    border: 2px solid var(--rosa-neon);
+    color: var(--branco-leitoso);
+    padding: 20px 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 8px;
+    
+    /* Efeitos de neon */
+    text-shadow: 0 0 5px var(--rosa-neon), 0 0 10px var(--rosa-neon);
+    box-shadow: 0 0 10px var(--rosa-neon), inset 0 0 10px var(--rosa-neon);
+
+    /* Animação de entrada */
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInScaleUp 1s ease-out 0.5s forwards;
+
+    /* Transição para o hover */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#enter-btn:hover {
+    background-color: var(--rosa-neon);
+    color: var(--preto-sujo);
+    text-shadow: none;
+    box-shadow: 0 0 20px var(--rosa-neon), 0 0 30px var(--rosa-neon);
+    transform: scale(1.05);
+}
+
+/* Animação para o botão aparecer suavemente */
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* BARRA DE NAVEGAÇÃO */

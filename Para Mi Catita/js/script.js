@@ -265,3 +265,27 @@ document.addEventListener('DOMContentLoaded', function() {
         // (Este código pode ser adicionado aqui dentro do 'if' também para organização)
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const enterBtn = document.getElementById('enter-btn');
+    const clickSound = document.getElementById('click-sound');
+
+    if (enterBtn) {
+        enterBtn.addEventListener('click', function() {
+            // Toca o som do clique, se o elemento de áudio existir
+            if (clickSound) {
+                clickSound.play();
+            }
+
+            // Adiciona a classe que ativa a animação de fade-out no CSS
+            document.body.classList.add('fading-out');
+
+            // Espera a animação de fade-out terminar (500ms) para redirecionar
+            setTimeout(function() {
+                // Redireciona para a página principal do seu site
+                window.location.href = 'index.html'; 
+            }, 500); // Este tempo deve ser igual ao da transição no CSS (0.5s)
+        });
+    }
+});
