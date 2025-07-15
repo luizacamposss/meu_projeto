@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 1. Lista de arquivos.
         const arquivosDaGaleria = [
-          'galeria1.mp4', 'galeria3.mp4', 'galeria4.mp4', 'galeria5.mp4', 'galeria6.mp4', 'galeria8.mp4', 'galeria9.jpg', 'galeria10.jpg',
+          'galeria9.jpg', 'galeria10.jpg',
           'galeria11.jpg', 'galeria12.jpg', 'galeria13.jpg', 'galeria14.jpg', 'galeria15.jpg', 'galeria16.jpg', 'galeria17.jpg', 'galeria18.jpg',
           'galeria19.jpg', 'galeria20.jpg', 'galeria21.jpg', 'galeria22.jpg', 'galeria23.jpg', 'galeria24.jpg', 'galeria25.jpg', 'galeria26.jpg',
           'galeria27.jpg', 'galeria28.jpg', 'galeria29.jpg', 'galeria30.jpg', 'galeria31.jpg', 'galeria32.jpg', 'galeria33.jpg', 'galeria34.jpg',
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Espera a animação de fade-out terminar (500ms) para redirecionar
             setTimeout(function() {
                 // Redireciona para a página principal do seu site
-                window.location.href = 'index.html'; 
+                window.location.href = 'home.html'; 
             }, 500); // Este tempo deve ser igual ao da transição no CSS (0.5s)
         });
     }
