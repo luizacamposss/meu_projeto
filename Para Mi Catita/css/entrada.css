@@ -1,0 +1,37 @@
+:root {
+    --rosa-neon: #FF6EC7; --azul-eletrico: #00B4FF;
+    --preto-sujo: #1A1A1A; --branco-leitoso: #F5F5F5;
+}
+body {
+    margin: 0; background-color: var(--preto-sujo); height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; transition: opacity 0.5s ease-out;
+}
+body.fading-out { opacity: 0; }
+.splash-container { text-align: center; }
+.splash-message {
+    font-size: 2em; color: var(--branco-leitoso);
+    text-shadow: 0 0 8px var(--rosa-neon);
+    margin-bottom: 40px;
+    animation: fadeInScaleUp 1s ease-out 0.2s forwards;
+    opacity: 0;
+}
+#enter-btn {
+    background-color: transparent; border: 2px solid var(--rosa-neon);
+    color: var(--branco-leitoso); padding: 20px 40px; font-size: 1.5em;
+    font-weight: bold; text-transform: uppercase; cursor: pointer;
+    border-radius: 8px; text-shadow: 0 0 5px var(--rosa-neon), 0 0 10px var(--rosa-neon);
+    box-shadow: 0 0 10px var(--rosa-neon), inset 0 0 10px var(--rosa-neon);
+    opacity: 0; transform: scale(0.8);
+    animation: fadeInScaleUp 1s ease-out 0.5s forwards;
+    transition: all 0.3s ease;
+}
+#enter-btn:hover {
+    background-color: var(--rosa-neon); color: var(--preto-sujo);
+    text-shadow: none; box-shadow: 0 0 20px var(--rosa-neon), 0 0 30px var(--rosa-neon);
+    transform: scale(1.05);
+}
+@keyframes fadeInScaleUp {
+    to { opacity: 1; transform: scale(1); }
+}

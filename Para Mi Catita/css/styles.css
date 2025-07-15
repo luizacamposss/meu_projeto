@@ -359,11 +359,3 @@ nav li a:hover, nav li a.active {
     color: var(--rosa-neon);
 }
 
-.splash-message {
-    font-size: 2em; /* Tamanho da fonte da mensagem */
-    color: var(--branco-leitoso);
-    text-shadow: 0 0 8px var(--rosa-neon); /* Efeito de brilho suave */
-    margin-bottom: 40px; /* Espaço entre a mensagem e o botão */
-    animation: fadeInScaleUp 1s ease-out 0.2s forwards; /* Usa a mesma animação do botão, mas um pouco antes */
-    opacity: 0; /* Começa invisível */
-}
