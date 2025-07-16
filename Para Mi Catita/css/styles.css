@@ -171,7 +171,7 @@ nav li a:hover, nav li a.active {
 }
 
 /* GALERIA (VERSÃO CORRIGIDA E MELHORADA) */
-#galeria-grid { /* <--- ADICIONE O # AQUI */
+.galeria-grid { /* <--- ADICIONE O # AQUI */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
