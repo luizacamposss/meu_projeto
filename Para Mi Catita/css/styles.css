@@ -1,3 +1,9 @@
+ /* ADICIONE NO TOPO DO STYLES.CSS */
+
+html {
+  overflow-y: scroll;
+}
+
  /* PALETA SAN JUNIPERO */
 :root {
     --rosa-neon: #FF6EC7;
@@ -266,7 +272,7 @@ nav li a:hover, nav li a.active {
     height: 100%;
     pointer-events: none;
     z-index: 1000;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .coracao {
