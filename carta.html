@@ -3,17 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Catita - Carta</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-    <title>Para Mi Catita</title>
-    <link rel="stylesheet" href="Para Mi Catita/css/styles.css">
-    <script src="Para Mi Catita/js/script.js" defer></script>
+    
+    <style>
+        /* PALETA */
+        :root {
+            --rosa-neon: #FF6EC7; --azul-eletrico: #00B4FF;
+            --roxo-profundo: #6A0DAD; --branco-leitoso: #F5F5F5;
+            --preto-sujo: #1A1A1A;
+        }
+
+        /* ESTILOS GERAIS */
+        html { overflow-y: scroll; }
+        body {
+            background-color: var(--preto-sujo); color: var(--branco-leitoso);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0; position: relative; min-height: 100vh;
+        }
+
+        /* NAVEGAÇÃO */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background-color: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); z-index: 100;
+        }
+        nav ul {
+            display: flex; justify-content: center; align-items: center;
+            gap: 30px; list-style: none; margin: 0; padding: 0;
+        }
+        nav li a {
+            display: block; padding: 14px 24px; color: var(--branco-leitoso);
+            text-decoration: none; transition: all 0.3s ease; font-weight: 500; border-radius: 6px;
+        }
+        nav li a:hover, nav li a.active {
+            background-color: var(--rosa-neon); color: var(--preto-sujo);
+        }
+
+        /* VÍDEO DE FUNDO */
+        #video-background {
+            position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: -100; opacity: 0.4;
+        }
+
+        /* CONTAINERS */
+        .container-principal {
+            position: relative; z-index: 2; padding-top: 100px; padding-bottom: 40px;
+            max-width: 900px; margin: 0 auto; padding-left: 20px; padding-right: 20px;
+        }
+        .secao-conteudo {
+            padding: 40px; background-color: rgba(26, 26, 26, 0.7);
+            border-radius: 12px; border: 1px solid var(--roxo-profundo);
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
+        }
+
+        /* ESTILOS ESPECÍFICOS DA CARTA */
+        .carta-container {
+            padding: 40px;
+            border-radius: 8px;
+            line-height: 1.8; /* Aumentado para melhor legibilidade */
+            font-size: 1.5em; /* Ajustado para a nova fonte */
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            color: #333; /* Cor de texto escura para contrastar com o papel */
+            background-color: rgba(245, 245, 245, 0.9); /* Fundo tipo papel */
+            font-family: 'Indie Flower', cursive; /* A FONTE ESPECIAL */
+        }
+        .carta-container p {
+           opacity: 0;
+           transform: translateY(20px);
+           transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .carta-container p.visivel {
+           opacity: 1;
+           transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Nós</a></li>
+            <li><a href="home.html">Nós</a></li>
             <li><a class="active" href="carta.html">Carta</a></li>
             <li><a href="galeria.html">Galeria</a></li>
             <li><a href="linhadotempo.html">Linha do Tempo</a></li>
@@ -26,18 +98,36 @@
 
     <main class="container-principal">
         <section class="secao-conteudo">
-
-            <div class="carta-container"> 
+             <div class="carta-container"> 
                 <p>Meu amor,</p>
-                <p>Uma palavra que pode definir o relacionamento da gente é "tempo". Assim como o tempo, os pequenos momentos acabam nos moldando e nos fazermos ser quem somos hoje em dia. Acho que outra palavra que pode definir o que eu sinto pelo nosso relacionamento é "gratidão". Todo dia eu sou grata por ter você na minha vida, todo dia eu sou grata por você ser quem você é, e todo dia eu sou grata por você existir. </p>
-                <p>Desde o início, sempre te admirei como pessoa, depois como amiga, e finalmente, como namorada. Eu sou completamente apaixonada por você, mulher 😭. E continuaria apaixonada em qualquer outra realidade.</p>
-                <p>Quase 3 anos juntas... e mesmo assim, parece igual a como tudo começou. Aproveitamos tão bem nossos pequenos momentos que assim como foi dito no inicio da carta, o "tempo" deixa de ser uma palavra vaga e acaba se tornando algo maior: um significado da nossa relação.</p>
+                <p>Acho que uma palavra que pode definir o relacionamento da gente é "tempo". Assim como o tempo, os pequenos momentos acabam nos moldando e nos fazermos ser quem somos hoje em dia. Desde o início, sempre te admirei como pessoa, depois como amiga, e finalmente, como namorada. Eu sou completamente apaixonada por você, mulherrrrrr. E continuaria te amando em qualquer outra realidade.</p>
+                <p>Outra palavra que compõe o nosso relacionamento é "gratidão". Todo dia eu sou grata por ter você na minha vida, todo dia eu sou grata por você ser quem você é, e todo dia eu sou grata por você existir.</p>
+                <p>Quase 3 anos juntas... e mesmo assim, parece igual a como tudo começou. Aproveitamos tão bem nossos pequenos momentos que assim como foi dito no inicio da carta, o tempo deixa de ser uma palavra vaga e acaba se tornando algo maior: um significado da nossa relação.</p>
                 <p>Dessa vez quis fazer algo diferente e te dar um presente que foi inteiramente feito por mim (e também com um dedo das ias que você tanto odeia kkkk). Não é muita coisa, mas foi feito de coração.</p>
                 <p>Te amooooo 💓</p>
                 <p>Com amor, Luiza</p>
             </div>
-            
         </section>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartaContainer = document.querySelector('.carta-container');
+            if (cartaContainer) {
+                const paragrafos = cartaContainer.querySelectorAll('p');
+                let i = 0;
+                const revelarProximoParagrafo = () => {
+                    if (i < paragrafos.length) {
+                        paragrafos[i].classList.add('visivel');
+                        i++;
+                    }
+                };
+                // Começa a revelar depois de um pequeno atraso
+                setTimeout(() => {
+                    setInterval(revelarProximoParagrafo, 2000); // Aumentei o tempo para a leitura ser mais calma
+                }, 500);
+            }
+        });
+    </script>
 </body>
 </html>
