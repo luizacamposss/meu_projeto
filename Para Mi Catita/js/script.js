@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pararCarrossel();
             iniciarCarrossel();
         };
-
+        
         atualizarCarrossel();
         iniciarCarrossel();
         carrosselContainer.addEventListener('mouseenter', pararCarrossel);
@@ -41,80 +41,4 @@ document.addEventListener('DOMContentLoaded', function() {
             const coracao = document.createElement('div');
             coracao.classList.add('coracao');
             coracao.innerText = '💖';
-            coracao.style.left = Math.random() * 100 + 'vw';
-            coracao.style.animationDuration = (Math.random() * 2 + 3) + 's';
-            containerCoracoes.appendChild(coracao);
-            setTimeout(() => coracao.remove(), 5000);
-        };
-        setInterval(criarCoracao, 300);
-    }
-
-    // --- LÓGICA DA CARTA (só executa se encontrar a carta) ---
-    const cartaContainer = document.querySelector('.carta-container');
-    if (cartaContainer) {
-        const paragrafos = cartaContainer.querySelectorAll('p');
-        let i = 0;
-        const revelarProximoParagrafo = () => {
-            if (i < paragrafos.length) {
-                paragrafos[i].classList.add('visivel');
-                i++;
-            }
-        };
-        setInterval(revelarProximoParagrafo, 1500);
-    }
-
-    // --- LÓGICA DA GALERIA (só executa se encontrar a galeria) ---
-    const galeriaGrid = document.getElementById('galeria-grid');
-    if (galeriaGrid) {
-        const arquivosDaGaleria = [
-          'galeria1.mp4', 'galeria3.mp4', 'galeria4.mp4', 'galeria5.mp4', 'galeria6.mp4', 'galeria8.mp4', 'galeria9.jpg', 'galeria10.jpg',
-          'galeria11.jpg', 'galeria12.jpg', 'galeria13.jpg', 'galeria14.jpg', 'galeria15.jpg', 'galeria16.jpg', 'galeria17.jpg', 'galeria18.jpg',
-          'galeria19.jpg', 'galeria20.jpg', 'galeria21.jpg', 'galeria22.jpg', 'galeria23.jpg', 'galeria24.jpg', 'galeria25.jpg', 'galeria26.jpg',
-          'galeria27.jpg', 'galeria28.jpg', 'galeria29.jpg', 'galeria30.jpg',
-          // Adicione o resto dos seus 140 arquivos aqui...
-        ];
-        const caminhoBase = 'Para Mi Catita/images/';
-
-        arquivosDaGaleria.forEach(nomeDoArquivo => {
-            const divItem = document.createElement('div');
-            divItem.classList.add('galeria-item');
-            if (nomeDoArquivo.endsWith('.mp4')) {
-                const video = document.createElement('video');
-                video.src = `${caminhoBase}${nomeDoArquivo}`;
-                video.controls = true; video.muted = true;
-                video.setAttribute('playsinline', ''); video.setAttribute('loop', '');
-                divItem.appendChild(video);
-            } else {
-                const img = document.createElement('img');
-                img.src = `${caminhoBase}${nomeDoArquivo}`;
-                img.alt = `Momento da galeria`;
-                divItem.appendChild(img);
-            }
-            galeriaGrid.appendChild(divItem);
-        });
-
-        // Lógica da Lightbox dentro do if da galeria
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-imagem');
-        const closeLightbox = document.querySelector('.fechar-lightbox');
-        const galleryImages = document.querySelectorAll('.galeria-item img');
-
-        galleryImages.forEach(img => {
-            img.addEventListener('click', function() {
-                if (lightbox) {
-                    lightbox.classList.add('ativo');
-                    lightboxImage.src = this.src;
-                    lightboxImage.alt = this.alt;
-                }
-            });
-        });
-        if (closeLightbox) {
-            closeLightbox.addEventListener('click', () => lightbox.classList.remove('ativo'));
-        }
-        if (lightbox) {
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) lightbox.classList.remove('ativo');
-            });
-        }
-    }
-});
+            coracao.style.
