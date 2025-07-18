@@ -121,66 +121,68 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const galeriaGrid = document.getElementById('galeria-grid');
-            if (galeriaGrid) {
-                // Elementos da Lightbox
-                const lightbox = document.getElementById('lightbox');
-                const lightboxImage = document.getElementById('lightbox-imagem');
-                const closeLightbox = document.querySelector('.fechar-lightbox');
+        // JAVASCRIPT CORRIGIDO E FINAL PARA GALERIA.HTML
+document.addEventListener('DOMContentLoaded', function() {
+    const galeriaGrid = document.getElementById('galeria-grid');
+    if (galeriaGrid) {
+        // Elementos da Lightbox (definidos uma vez no início)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-imagem');
+        const closeLightbox = document.querySelector('.fechar-lightbox');
 
-                // Lista de Arquivos
-                const arquivosDaGaleria = [
-                    'galeria1.mp4', 'galeria3.mp4', 'galeria4.mp4', 'galeria5.mp4', 'galeria6.mp4', 'galeria8.mp4', 'galeria9.jpg', 'galeria10.jpg',
-                    'galeria11.jpg', 'galeria12.jpg', 'galeria13.jpg', 'galeria14.jpg', 'galeria15.jpg', 'galeria16.jpg', 'galeria17.jpg', 'galeria18.jpg',
-                    'galeria19.jpg', 'galeria20.jpg', 'galeria21.jpg', 'galeria22.jpg', 'galeria23.jpg', 'galeria24.jpg', 'galeria25.jpg', 'galeria26.jpg',
-                    'galeria27.jpg', 'galeria28.jpg', 'galeria29.jpg', 'galeria30.jpg',
-                    // Lembre-se de completar a lista com todos os seus arquivos
-                ];
-                const caminhoBase = 'Para Mi Catita/images/';
+        // Lista de Arquivos
+        const arquivosDaGaleria = [
+          'galeria1.mp4', 'galeria3.mp4', 'galeria4.mp4', 'galeria5.mp4', 'galeria6.mp4', 'galeria8.mp4', 'galeria9.jpg', 'galeria10.jpg',
+          'galeria11.jpg', 'galeria12.jpg', 'galeria13.jpg', 'galeria14.jpg', 'galeria15.jpg', 'galeria16.jpg', 'galeria17.jpg', 'galeria18.jpg',
+          'galeria19.jpg', 'galeria20.jpg', 'galeria21.jpg', 'galeria22.jpg', 'galeria23.jpg', 'galeria24.jpg', 'galeria25.jpg', 'galeria26.jpg',
+          'galeria27.jpg', 'galeria28.jpg', 'galeria29.jpg', 'galeria30.jpg',
+          // Lembre-se de completar a lista com todos os seus arquivos...
+        ];
+        const caminhoBase = 'Para Mi Catita/images/';
 
-                arquivosDaGaleria.forEach(nomeDoArquivo => {
-                    const divItem = document.createElement('div');
-                    divItem.classList.add('galeria-item');
+        // Loop que cria a galeria
+        arquivosDaGaleria.forEach(nomeDoArquivo => {
+            const divItem = document.createElement('div');
+            divItem.classList.add('galeria-item');
 
-                    if (nomeDoArquivo.endsWith('.mp4')) {
-                        const video = document.createElement('video');
-                        video.src = `${caminhoBase}${nomeDoArquivo}`;
-                        video.controls = true;
-                        video.muted = true;
-                        divItem.appendChild(video);
-                    } else {
-                        const img = document.createElement('img');
-                        img.src = `${caminhoBase}${nomeDoArquivo}`;
-                        img.alt = `Momento da galeria`;
-                        
-                        // CORREÇÃO: Adiciona o evento de clique logo após criar a imagem
-                        img.addEventListener('click', function() {
-                            if (lightbox) {
-                                lightbox.classList.add('ativo');
-                                lightboxImage.src = this.src;
-                                lightboxImage.alt = this.alt;
-                            }
-                        });
-                        
-                        divItem.appendChild(img);
+            if (nomeDoArquivo.endsWith('.mp4')) {
+                const video = document.createElement('video');
+                video.src = `${caminhoBase}${nomeDoArquivo}`;
+                video.controls = true;
+                video.muted = true;
+                divItem.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = `${caminhoBase}${nomeDoArquivo}`;
+                img.alt = `Momento da galeria`;
+                
+                // CORREÇÃO: Adiciona o evento de clique LOGO APÓS criar a imagem
+                img.addEventListener('click', function() {
+                    if (lightbox) {
+                        lightbox.classList.add('ativo');
+                        lightboxImage.src = this.src;
+                        lightboxImage.alt = this.alt;
                     }
-                    galeriaGrid.appendChild(divItem);
                 });
-
-                // Lógica para fechar a lightbox
-                if (closeLightbox) {
-                    closeLightbox.addEventListener('click', () => {
-                        if (lightbox) lightbox.classList.remove('ativo');
-                    });
-                }
-                if (lightbox) {
-                    lightbox.addEventListener('click', (e) => {
-                        if (e.target === lightbox) lightbox.classList.remove('ativo');
-                    });
-                }
+                
+                divItem.appendChild(img);
             }
+            galeriaGrid.appendChild(divItem);
         });
+
+        // Lógica para fechar a lightbox
+        if (closeLightbox) {
+            closeLightbox.addEventListener('click', () => {
+                if (lightbox) lightbox.classList.remove('ativo');
+            });
+        }
+        if (lightbox) {
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) lightbox.classList.remove('ativo');
+            });
+        }
+    }
+});
     </script>
 </body>
 </html>
