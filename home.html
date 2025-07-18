@@ -4,7 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Mi Catita</title>
-    <link rel="stylesheet" href="Para Mi Catita/css/styles.css?v=1.1">
+    
+    <style>
+        /* PALETA */
+        :root {
+            --rosa-neon: #FF6EC7; --azul-eletrico: #00B4FF;
+            --roxo-profundo: #6A0DAD; --branco-leitoso: #F5F5F5;
+            --preto-sujo: #1A1A1A;
+        }
+
+        /* ESTILOS GERAIS E CORREÇÃO DE SCROLL */
+        html { overflow-y: scroll; }
+        body {
+            background-color: var(--preto-sujo); color: var(--branco-leitoso);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0; position: relative; min-height: 100vh;
+        }
+
+        /* NAVEGAÇÃO */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background-color: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); z-index: 100;
+        }
+        nav ul {
+            display: flex; justify-content: center; align-items: center;
+            gap: 30px; list-style: none; margin: 0; padding: 0;
+        }
+        nav li a {
+            display: block; padding: 14px 24px; color: var(--branco-leitoso);
+            text-decoration: none; transition: all 0.3s ease; font-weight: 500; border-radius: 6px;
+        }
+        nav li a:hover, nav li a.active {
+            background-color: var(--rosa-neon); color: var(--preto-sujo);
+            text-shadow: 0 0 5px var(--branco-leitoso);
+        }
+
+        /* VÍDEO DE FUNDO */
+        #video-background {
+            position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: -100; opacity: 0.4;
+        }
+
+        /* CONTAINERS */
+        .container-principal {
+            position: relative; z-index: 2; padding-top: 100px; padding-bottom: 40px;
+            max-width: 900px; margin: 0 auto; padding-left: 20px; padding-right: 20px;
+        }
+        .container-centralizado {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; box-sizing: border-box;
+        }
+        .secao-conteudo {
+            padding: 60px 20px 40px 20px; background-color: rgba(26, 26, 26, 0.7);
+            border-radius: 12px; border: 1px solid var(--roxo-profundo);
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.5); position: relative;
+            width: 100%; box-sizing: border-box;
+        }
+
+        /* CARROSSEL */
+        .carrossel {
+            position: relative; width: 100%; max-width: 800px;
+            overflow: hidden; box-shadow: 0 0 20px var(--rosa-neon);
+            margin: 30px auto; border: 2px solid var(--azul-eletrico); border-radius: 8px;
+        }
+        .slides {
+            display: flex; transition: transform 0.5s ease-in-out;
+        }
+        .slide { min-width: 100%; }
+        .slide img {
+            width: 100%; display: block; height: 400px; object-fit: cover;
+        }
+        .indicadores {
+            text-align: center; padding: 15px; background-color: rgba(106, 13, 173, 0.7);
+        }
+        .indicador {
+            display: inline-block; width: 12px; height: 12px; margin: 0 5px;
+            background-color: var(--branco-leitoso); border-radius: 50%;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .indicador.ativo {
+            background-color: var(--azul-eletrico);
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -41,6 +123,42 @@
         </section>
     </main>
 
-    <script src="Para Mi Catita/js/script.js?v=1.1" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carrosselContainer = document.querySelector('.carrossel');
+            if (carrosselContainer) {
+                let slideAtual = 0;
+                const slides = carrosselContainer.querySelector('.slides');
+                const totalSlides = carrosselContainer.querySelectorAll('.slide').length;
+                const indicadores = carrosselContainer.querySelectorAll('.indicador');
+                let intervalo;
+
+                const iniciarCarrossel = () => intervalo = setInterval(proximoSlide, 4000);
+                const pararCarrossel = () => clearInterval(intervalo);
+                
+                const proximoSlide = () => {
+                    slideAtual = (slideAtual + 1) % totalSlides;
+                    atualizarCarrossel();
+                };
+
+                const atualizarCarrossel = () => {
+                    slides.style.transform = `translateX(${-slideAtual * 100}%)`;
+                    indicadores.forEach((ind, i) => ind.classList.toggle('ativo', i === slideAtual));
+                };
+
+                window.mostrarSlide = (n) => {
+                    slideAtual = n;
+                    atualizarCarrossel();
+                    pararCarrossel();
+                    iniciarCarrossel();
+                };
+                
+                atualizarCarrossel();
+                iniciarCarrossel();
+                carrosselContainer.addEventListener('mouseenter', pararCarrossel);
+                carrosselContainer.addEventListener('mouseleave', iniciarCarrossel);
+            }
+        });
+    </script>
 </body>
 </html>
