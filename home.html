@@ -3,47 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Catita</title>
-    <link rel="stylesheet" href="Para Mi Catita/css/styles.css">
+    <title>Para Mi Catita - Teste Carrossel</title>
+    
+    <style>
+        :root {
+            --rosa-neon: #FF6EC7; --azul-eletrico: #00B4FF;
+            --roxo-profundo: #6A0DAD; --branco-leitoso: #F5F5F5;
+            --preto-sujo: #1A1A1A;
+        }
+        body {
+            background-color: var(--preto-sujo);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .carrossel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+            box-shadow: 0 0 20px var(--rosa-neon);
+            border: 2px solid var(--azul-eletrico);
+            border-radius: 8px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+        }
+        .slide img {
+            width: 100%;
+            display: block;
+            height: 400px;
+            object-fit: cover;
+        }
+        .indicadores {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(106, 13, 173, 0.7);
+        }
+        .indicador {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: var(--branco-leitoso);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .indicador.ativo {
+            background-color: var(--azul-eletrico);
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a class="active" href="home.html">Nós</a></li>
-            <li><a href="carta.html">Carta</a></li>
-            <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="linhadotempo.html">Linha do Tempo</a></li>
-        </ul>
-    </nav>
 
-    <div class="coracoes"></div>
-    <video autoplay muted loop id="video-background">
-        <source src="Para Mi Catita/videos/video_album.mp4" type="video/mp4">
-    </video>
+    <div class="carrossel">
+        <div class="slides">
+            <div class="slide"><img src="Para Mi Catita/images/img 1.jpg" alt="Imagem 1"></div>
+            <div class="slide"><img src="Para Mi Catita/images/img 2.jpg" alt="Imagem 2"></div>
+            <div class="slide"><img src="Para Mi Catita/images/img 3.jpg" alt="Imagem 3"></div>
+            <div class="slide"><img src="Para Mi Catita/images/img 4.jpg" alt="Imagem 4"></div>
+            <div class="slide"><img src="Para Mi Catita/images/img 5.jpg" alt="Imagem 5"></div>
+        </div>
+        <div class="indicadores">
+            <span class="indicador" onclick="mostrarSlide(0)"></span>
+            <span class="indicador" onclick="mostrarSlide(1)"></span>
+            <span class="indicador" onclick="mostrarSlide(2)"></span>
+            <span class="indicador" onclick="mostrarSlide(3)"></span>
+            <span class="indicador" onclick="mostrarSlide(4)"></span>
+        </div>
+    </div>
 
-    <main class="container-principal">
-        <section class="secao-conteudo">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carrosselContainer = document.querySelector('.carrossel');
+            if (carrosselContainer) {
+                let slideAtual = 0;
+                const slides = carrosselContainer.querySelector('.slides');
+                const totalSlides = carrosselContainer.querySelectorAll('.slide').length;
+                const indicadores = carrosselContainer.querySelectorAll('.indicador');
+                let intervalo;
 
-            <div class="carrossel">
-                <div class="slides">
-                    <div class="slide"><img src="Para Mi Catita/images/img 1.jpg" alt="Imagem 1"></div>
-                    <div class="slide"><img src="Para Mi Catita/images/img 2.jpg" alt="Imagem 2"></div>
-                    <div class="slide"><img src="Para Mi Catita/images/img 3.jpg" alt="Imagem 3"></div>
-                    <div class="slide"><img src="Para Mi Catita/images/img 4.jpg" alt="Imagem 4"></div>
-                    <div class="slide"><img src="Para Mi Catita/images/img 5.jpg" alt="Imagem 5"></div>
-                    </div>
-                <div class="indicadores">
-                    <span class="indicador" onclick="mostrarSlide(0)"></span>
-                    <span class="indicador" onclick="mostrarSlide(1)"></span>
-                    <span class="indicador" onclick="mostrarSlide(2)"></span>
-                    <span class="indicador" onclick="mostrarSlide(3)"></span>
-                    <span class="indicador" onclick="mostrarSlide(4)"></span>
-                     </div>
-            </div>
+                const iniciarCarrossel = () => intervalo = setInterval(proximoSlide, 4000);
+                const pararCarrossel = () => clearInterval(intervalo);
+                
+                const proximoSlide = () => {
+                    slideAtual = (slideAtual + 1) % totalSlides;
+                    atualizarCarrossel();
+                };
 
-        </section>
-    </main>
+                const atualizarCarrossel = () => {
+                    slides.style.transform = `translateX(${-slideAtual * 100}%)`;
+                    indicadores.forEach((ind, i) => ind.classList.toggle('ativo', i === slideAtual));
+                };
 
-    <script src="Para Mi Catita/js/script.js" defer></script>
+                window.mostrarSlide = (n) => {
+                    slideAtual = n;
+                    atualizarCarrossel();
+                    pararCarrossel();
+                    iniciarCarrossel();
+                };
+                
+                atualizarCarrossel();
+                iniciarCarrossel();
+                carrosselContainer.addEventListener('mouseenter', pararCarrossel);
+                carrosselContainer.addEventListener('mouseleave', iniciarCarrossel);
+            }
+        });
+    </script>
 </body>
 </html>
