@@ -109,6 +109,7 @@ nav li a:hover, nav li a.active {
 .carta-container {
     padding: 40px; border-radius: 8px; line-height: 1.6; font-size: 1.4em;
     color: var(--preto-sujo); background-color: rgba(245, 245, 245, 0.9);
+    font-family: 'Indie Flower', cursive;
 }
 .carta-container p {
    opacity: 0; transform: translateY(15px);
